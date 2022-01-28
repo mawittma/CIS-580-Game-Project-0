@@ -8,6 +8,8 @@ namespace Game_Project_0
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+        private SpriteFont earthboundBig;
+        private SpriteFont earthboundSmall;
 
         public TitleScreen()
         {
@@ -26,6 +28,8 @@ namespace Game_Project_0
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
+            earthboundBig = Content.Load<SpriteFont>("EarthboundBig");
+            earthboundSmall = Content.Load<SpriteFont>("EarthboundSmall");
 
             // TODO: use this.Content to load your game content here
         }
@@ -42,8 +46,12 @@ namespace Game_Project_0
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Orange);
 
+            _spriteBatch.Begin();
+            _spriteBatch.DrawString(earthboundBig, "Rocket League", new Vector2(200, 150), Color.Black);
+            _spriteBatch.DrawString(earthboundSmall, "Hit 'ESC' on keyboard or 'back' on controller to exit", new Vector2(15,400), Color.Black);
+            _spriteBatch.End();
             // TODO: Add your drawing code here
 
             base.Draw(gameTime);
